@@ -1,0 +1,15 @@
+D:\job_c#\StudentManage\bin\Debug\StudentManage.exe.config
+D:\job_c#\StudentManage\bin\Debug\StudentManage.exe
+D:\job_c#\StudentManage\bin\Debug\StudentManage.pdb
+D:\job_c#\StudentManage\bin\Debug\EntityFramework.dll
+D:\job_c#\StudentManage\bin\Debug\EntityFramework.SqlServer.dll
+D:\job_c#\StudentManage\bin\Debug\EntityFramework.xml
+D:\job_c#\StudentManage\bin\Debug\EntityFramework.SqlServer.xml
+D:\job_c#\StudentManage\obj\Debug\StudentManage.csproj.AssemblyReference.cache
+D:\job_c#\StudentManage\obj\Debug\StudentManage.Properties.Resources.resources
+D:\job_c#\StudentManage\obj\Debug\StudentManage.csproj.GenerateResource.cache
+D:\job_c#\StudentManage\obj\Debug\StudentManage.csproj.CoreCompileInputs.cache
+D:\job_c#\StudentManage\obj\Debug\StudentM.8B404CC9.Up2Date
+D:\job_c#\StudentManage\obj\Debug\StudentManage.exe
+D:\job_c#\StudentManage\obj\Debug\StudentManage.pdb
+D:\job_c#\StudentManage\obj\Debug\StudentManage.StudentManage.resources
