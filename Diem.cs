@@ -15,9 +15,9 @@ namespace StudentManage
     public partial class Diem
     {
         public int MaDiem { get; set; }
-        public Nullable<int> MaSinhVien { get; set; }
+        public int MaSinhVien { get; set; }
         public string MonHoc { get; set; }
-        public Nullable<double> DiemSo { get; set; }
+        public double DiemSo { get; set; }
     
         public virtual SinhVien SinhVien { get; set; }
     }

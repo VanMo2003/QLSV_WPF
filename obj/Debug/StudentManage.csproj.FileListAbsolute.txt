@@ -13,3 +13,5 @@ D:\job_c#\StudentManage\obj\Debug\StudentM.8B404CC9.Up2Date
 D:\job_c#\StudentManage\obj\Debug\StudentManage.exe
 D:\job_c#\StudentManage\obj\Debug\StudentManage.pdb
 D:\job_c#\StudentManage\obj\Debug\StudentManage.StudentManage.resources
+D:\job_c#\StudentManage\obj\Debug\StudentManage.EnterInfo.resources
+D:\job_c#\StudentManage\obj\Debug\StudentManage.ScoreManage.resources
