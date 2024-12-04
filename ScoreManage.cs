@@ -13,14 +13,15 @@ namespace StudentManage
 {
     public partial class ScoreManage : Form
     {
-        QuanLySinhVienEntities database = new QuanLySinhVienEntities();
+        QuanLySinhVienEntities database;
         DataTable dataTable;
         public SinhVien sinhVien { get; set; }
         List<Diem> diems { get; set; }
-        public ScoreManage(SinhVien sinhVien)
+        public ScoreManage(QuanLySinhVienEntities database, SinhVien sinhVien)
         {
             InitializeComponent();
             initDataTable();
+            this.database = database;
             this.sinhVien = sinhVien;
             diems = sinhVien.Diems.ToList();
         }
@@ -61,7 +62,7 @@ namespace StudentManage
 
         private void btnOke_Click(object sender, EventArgs e)
         {
-            List<Diem> diems = sinhVien.Diems.ToList();
+            List<Diem> diems = database.Diems.Where(sc => sc.MaSinhVien == sinhVien.MaSinhVien).ToList();
 
             foreach (DataGridViewRow row in dgrScoreManage.Rows)
             {
@@ -70,27 +71,21 @@ namespace StudentManage
                     string subName = row.Cells[ConstantApp.columnNameSub].Value?.ToString(); 
                     string score = row.Cells[ConstantApp.columnScore].Value?.ToString(); 
 
-                    SinhVien sinhVienFound = database.SinhViens.Find(sinhVien.MaSinhVien);
                     if (diems.Count() == 0)
                     {
                         Diem diem = new Diem();
 
-                        diem.MaSinhVien = sinhVienFound.MaSinhVien;
+                        diem.MaSinhVien = sinhVien.MaSinhVien;
                         diem.MonHoc = subName;
                         diem.DiemSo = double.Parse(score);
 
-                        sinhVienFound.Diems.Add(diem);
-                        sinhVien.Diems.Add(diem);
+                        database.Diems.Add(diem);
                     }
                     else
                     {
-                        Diem diemFound = database.Diems.Where(sc => sc.MonHoc == subName && sc.MaSinhVien == sinhVienFound.MaSinhVien).FirstOrDefault();
+                        Diem diemFound = database.Diems.Where(sc => sc.MonHoc == subName && sc.MaSinhVien == sinhVien.MaSinhVien).FirstOrDefault();
                         diemFound.DiemSo = double.Parse(score);
-
-                        sinhVien.Diems.Where(sc => sc.MonHoc == subName).FirstOrDefault().DiemSo = double.Parse(score);
                     }
-
-                    database.SaveChanges();
                 }
             }
 

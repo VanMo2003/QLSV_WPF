@@ -145,14 +145,20 @@ namespace StudentManage
 
             if (result == MessageBoxResult.Yes)
             {
-                SinhVien sinhVienFound = database.SinhViens.Find(sinhVien.MaSinhVien);
+                SinhVien sinhVienFound = database.SinhViens.FirstOrDefault(sv => sv.MaSinhVien == sinhVien.MaSinhVien);
                
                 if (sinhVienFound != null)
                 {
-                    foreach (var diem in database.Diems.Where(sc => sc.MaSinhVien == sinhVienFound.MaSinhVien).ToList())
+                    var diems = database.Diems.Where(sc => sc.MaSinhVien == sinhVienFound.MaSinhVien).ToList();
+                    if (diems.Count() != 0)
                     {
-                        database.Diems.Remove(diem);
+                        foreach (var diem in diems)
+                        {
+                            database.Diems.Remove(diem);
+                        }
+
                     }
+
                     //dataGridView.Rows.RemoveAt(dataGridView.SelectedRows[0].Index);
                     database.SinhViens.Remove(sinhVienFound);
                     database.SaveChanges();
@@ -166,9 +172,8 @@ namespace StudentManage
 
         private void btnAddScore_Click(object sender, EventArgs e)
         {
-            SinhVien sinhVienSelected = getStudentSelected();
-            SinhVien sinhVien = database.SinhViens.Where(sv => sv.MaSinhVien == sinhVienSelected.MaSinhVien).First();
-            ScoreManage scoreManage = new ScoreManage(sinhVien);
+            SinhVien sinhVien = getStudentSelected();
+            ScoreManage scoreManage = new ScoreManage(database, sinhVien);
 
             DialogResult result = scoreManage.ShowDialog();
 

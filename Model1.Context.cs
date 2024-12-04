@@ -22,7 +22,11 @@ namespace StudentManage
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<Diem>()
+                .HasRequired(d => d.SinhVien) // Ràng buộc bắt buộc
+                .WithMany(s => s.Diems)       // Quan hệ 1-N
+                .HasForeignKey(d => d.MaSinhVien)
+                .WillCascadeOnDelete(true);  // Bật cascade delete
         }
     
         public virtual DbSet<Diem> Diems { get; set; }
